@@ -1,9 +1,11 @@
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 enum Lang {
   English,
   Spanish,
   Chinese,
   Texan,
+  Portuguese,
+  German,
 }
 
 struct Greeting {
@@ -22,8 +24,16 @@ fn main() {
   v.push(g);
   let g : Greeting = Greeting { lang: Lang::Chinese, message: String::from("WasmEdge 你好!") };
   v.push(g);
+  let g : Greeting = Greeting { lang: Lang::Portuguese, message: String::from("Olá WasmEdge!") };
+  v.push(g);
+  let g : Greeting = Greeting { lang: Lang::German, message: String::from("Hallo WasmEdge!") };
+  v.push(g);
+
+  let selected_lang = Lang::German;
 
   for e in v {
-    println!("{:?} {}", e.lang, e.message);
+    if e.lang == selected_lang {
+      println!("{:?} {}", e.lang, e.message);
+    }
   }
 }
